@@ -3,6 +3,7 @@ import logging
 import eons as e
 import threading
 from subprocess import Popen, PIPE, STDOUT
+from threading import Thread
 from .Exceptions import *
 
 class HWBase(e.UserFunctor):
@@ -13,7 +14,7 @@ class HWBase(e.UserFunctor):
         this.state = state
 
         # If you would like to loop Run() in a separate thread, set this to true, otherwise, set to false
-        this.RunInThread = True
+        this.shouldRunInThread = True
 
         # For required args, simply list what is needed. They will be provided as member variables or *this will not be run.
         this.requiredKWArgs = []
@@ -103,6 +104,12 @@ class HWBase(e.UserFunctor):
         if (not this.Initialize()):
             errStr = f"Failed to initialize {this.name}"
             raise InitializationError(errStr)
+
+        if (this.shouldRunInThread):
+            thread = Thread(target=this.Run).start()
+            thread.join()
+        else:
+            this.Run()
 
         if (not this.Cleanup()):
             logging.error(f"Failed to clean up {this.name}")
