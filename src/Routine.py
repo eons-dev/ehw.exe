@@ -1,17 +1,12 @@
 import os
 import logging
-import eons as e
+import eons
 from .Exceptions import *
 from .HWBase import HWBase
 
 class Routine(HWBase):
-    def __init__(this, name=e.INVALID_NAME()):
+    def __init__(this, name=eons.INVALID_NAME()):
         super(HWBase).__init__(name)
-
-        # See HWBase for docs
-        this.RunInThread = True
-        this.requiredKWArgs = []
-        this.optionalKWArgs = {}
 
     # Do stuff!
     # Override this or die.
@@ -20,7 +15,7 @@ class Routine(HWBase):
 
     # Hook for any pre-run configuration.
     # RETURN whether or not to continue running.
-    def Initialize(this):
+    def InitializeHardware(this):
         return True
 
     # Hook for any post-run configuration.

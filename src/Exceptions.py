@@ -1,17 +1,19 @@
+import eons
+
 # For validating args
-class ArgumentNotProvided(Exception): pass
+class ArgumentNotProvided(Exception, metaclass=eons.ActualType): pass
 
 # For initialization
-class InitializationError(Exception): pass
+class InitializationError(Exception, metaclass=eons.ActualType): pass
 
 # All Device errors
-class DevicesError(Exception): pass
+class DevicesError(Exception, metaclass=eons.ActualType): pass
 
 # Exception used for miscellaneous Device errors.
-class OtherBuildError(DevicesError): pass
+class OtherBuildError(DevicesError, metaclass=eons.ActualType): pass
 
 # All Routine errors
-class RoutineError(Exception): pass
+class RoutineError(Exception, metaclass=eons.ActualType): pass
 
 # Exception used for miscellaneous Routine errors.
-class OtherRoutineError(RoutineError): pass
+class OtherRoutineError(RoutineError, metaclass=eons.ActualType): pass
