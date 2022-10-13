@@ -6,7 +6,7 @@ from .HWBase import HWBase
 
 class Routine(HWBase):
     def __init__(this, name=eons.INVALID_NAME()):
-        super(HWBase).__init__(name)
+        super().__init__(name)
 
     # Do stuff!
     # Override this or die.
