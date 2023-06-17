@@ -2,7 +2,7 @@
   "next": [
     {
       "build" : "py_package",
-      "build_in" : "pkg",
+      "build_in" : "exe",
       "config" : {
         "clear_build_path" : false,
         "author_name" : "eons",

@@ -7,13 +7,13 @@
         "release"
       ],
       "build" : "proxy",
-      "build_in" : "bin_ehw",
+      "build_in" : "ehw.exe",
       "copy" : [
-        {"../../../src/" : "bin_ehw/src/"},
-        {"../../../inc/" : "bin_ehw/inc/"},
-        {"../../../test/" : "bin_ehw/test/"},
-        {"../../../README.md" : "bin_ehw/README.md"},
-        {"../../../LICENSE" : "bin_ehw/LICENSE"}
+        {"/src/" : "ehw.exe/src/"},
+        {"/inc/" : "ehw.exe/inc/"},
+        {"/test/" : "ehw.exe/test/"},
+        {"/README.md" : "ehw.exe/README.md"},
+        {"/LICENSE" : "ehw.exe/LICENSE"}
       ],
       "config" : {
         "clear_build_path" : false,

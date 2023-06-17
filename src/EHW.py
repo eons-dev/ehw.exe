@@ -1,28 +1,22 @@
-import os
+import requests
 import logging
-import eons
-import jsonpickle
+import platform
 
-from .Exceptions import *
-from .State import State
+class EHW:
 
-class EHW(eons.Executor):
+	@staticmethod
+	def GetHWId():
+		response = requests.get('https://eons.sh/hw/id', params={
+			'os': platform.system(),
+			'machine': platform.machine(),
+			'arch': platform.architecture()[0],
+			'processor': platform.processor(),
+			'version': platform.version(),
+			'hostname': platform.node()
+		})
+		return response.text
+		
 
-    def __init__(this):
-        super().__init__(name="eons hardware", descriptionStr="Modular framework for controlling hardware devices.")
-
-        this.defaultPrefix = "hw"
-
-        this.state = State()
-
-        this.requiredKWArgs.append('routines')
-
-    #Override of eons.Executor method. See that class for details
-    def Function(this):
-        super().Function()
-        for r in this.routines:
-            this.StartRoutine(r)
-
-    #Run some Routine.
-    def StartRoutine(this, routine, *args, **kwargs):
-        return this.Execute(routine, *args, **kwargs)
+	#Called when executing this as a functor.
+	def __call__(this):
+		print(EHW.GetHWId())

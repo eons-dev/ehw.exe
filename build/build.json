@@ -1,6 +1,6 @@
 {
   "name": "ehw",
-  "type": "bin",
+  "type": "exe",
   "clear_build_path" : true,
   "build_in" : "tmp",
   "next": [
@@ -11,11 +11,11 @@
       "build" : "proxy",
       "build_in" : "local",
       "copy" : [
-        {"../../src/" : "local/src/"},
-        {"../../inc/" : "local/inc/"},
-        {"../../test/" : "local/test/"},
-        {"../../README.md" : "local/README.md"},
-        {"../../LICENSE" : "local/LICENSE"}
+        {"/src/" : "local/src/"},
+        {"/inc/" : "local/inc/"},
+        {"/test/" : "local/test/"},
+        {"/README.md" : "local/README.md"},
+        {"/LICENSE" : "local/LICENSE"}
       ],
       "config" : {
         "clear_build_path" : false,
